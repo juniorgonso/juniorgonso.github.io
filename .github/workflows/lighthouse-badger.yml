@@ -46,16 +46,19 @@ jobs:
           echo "BRANCH=$BRANCH" >> $GITHUB_ENV
         env:
           REPO_BRANCH: ${{ env.REPO_BRANCH }}
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
         with:
           repository: ${{ env.REPOSITORY }}
-          token: ${{ secrets.LIGHTHOUSE_BADGER_TOKEN }}
+          token: ${{ secrets.ACTIONS_PAT }}
           ref: ${{ env.BRANCH }}
-      - uses: actions/checkout@v4
+      - name: Checkout Lighthouse badges
+        uses: actions/checkout@v4
         with:
           repository: "myactionway/lighthouse-badges"
           path: temp_lighthouse_badges_nested
-      - uses: myactionway/lighthouse-badger-action@v2.2
+      - name: Run Lighthouse Badger Action
+        uses: myactionway/lighthouse-badger-action@v2.2
         with:
           urls: ${{ env.URLS }}
           mobile_lighthouse_params: ${{ env.MOBILE_LIGHTHOUSE_PARAMS }}
