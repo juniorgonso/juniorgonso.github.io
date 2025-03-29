@@ -1,5 +1,5 @@
 title: "Meu Site"
 description: "Descrição do meu site"
-baseurl: "/mrgonso.github.io" # Subdiretório do site (use o nome do repositório)
+baseurl: "" # Subdiretório do site (deixe vazio se for a raiz)
 url: "https://juniorgonso.github.io" # URL do site
 theme: minima # Tema padrão do Jekyll
