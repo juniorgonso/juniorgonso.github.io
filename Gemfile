@@ -1,0 +1,5 @@
+source "https://rubygems.org"
+
+gem "faraday-retry"
+gem "github-pages", group: :jekyll_plugins # Para sites hospedados no GitHub Pages
+gem "webrick", "~> 1.7"  # Necessário para o servidor local no Ruby 3.x

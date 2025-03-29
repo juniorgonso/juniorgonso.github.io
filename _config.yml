@@ -1,0 +1,5 @@
+title: "Meu Site"
+description: "Descrição do meu site"
+baseurl: "" # Subdiretório do site (deixe vazio se for a raiz)
+url: "http://localhost:4000" # URL do site
+theme: minima # Tema padrão do Jekyll
