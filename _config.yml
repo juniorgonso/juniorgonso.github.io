@@ -1,5 +1,5 @@
-title: "Meu Site"
-description: "Descrição do meu site"
-baseurl: "" # Subdiretório do site (deixe vazio se for a raiz)
+title: "Obedes Lopes | Desenvolvedor e Criador de Conteúdo"
+description: "Portfólio profissional de Obedes Lopes, apresentando projetos, soluções em tecnologia e dicas técnicas."
+baseurl: "" # Deixe vazio se o site estiver na raiz
 url: "https://juniorgonso.github.io" # URL do site
 theme: minima # Tema padrão do Jekyll
