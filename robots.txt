@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://mrgonso.github.io/sitemap.xml
+Sitemap: https://juniorgonso.github.io/sitemap.xml
