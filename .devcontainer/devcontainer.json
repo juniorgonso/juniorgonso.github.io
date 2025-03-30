@@ -1,31 +1,35 @@
-// For format details, see https://aka.ms/devcontainer.json. For config options, see the
-// README at: https://github.com/devcontainers/templates/tree/main/src/jekyll
 {
-  "name": "Jekyll",
-  "image": "mcr.microsoft.com/devcontainers/jekyll",
-
-  // Features to add to the dev container. More info: https://containers.dev/features.
+  "name": "Dev Container (Ubuntu + Node + Python + Gemini API)",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  
   "features": {
-    "ghcr.io/rocker-org/devcontainer-features/apt-packages:1": {
-      "packages": "build-essential,imagemagick,inotify-tools,jupyter-nbconvert,procps,ruby-full,zlib1g-dev"
-    },
-    "ghcr.io/devcontainers-contrib/features/prettier:1": {}
+    "git": "latest",
+    "node": "lts",
+    "python": {
+      "version": "3.11",
+      "installTools": true
+    }
   },
 
-  // Optionally: run jekyll serve automatically on container entering using the Docker entrypoint
-  "postAttachCommand": "./bin/entry_point.sh",
+  "postCreateCommand": "pip install google-generativeai python-dotenv && echo 'Dependências do Gemini instaladas!'",
 
   "customizations": {
     "vscode": {
-      "extensions": ["esbenp.prettier-vscode", "sissel.shopify-liquid", "yzhang.markdown-all-in-one"],
+      "extensions": [
+        "ms-python.python",
+        "dbaeumer.vscode-eslint",
+        "GitHub.copilot-chat",  # Para integração com IA
+        "GoogleCloudTools.cloudcode"  # Extensão oficial do Google Cloud
+      ],
       "settings": {
-        // use prettier code formatter as default formatter
-        "editor.defaultFormatter": "esbenp.prettier-vscode",
-        "prettier.configPath": ".prettierrc",
-        "editor.formatOnSave": true
+        "python.analysis.extraPaths": ["./"],
+        "python.formatting.provider": "black",
+        "google.generativeAI.apiKey": "${localEnv:GEMINI_API_KEY}"  # Configuração da chave
       }
     }
   },
 
-  "remoteUser": "vscode"
+  "remoteEnv": {
+    "GEMINI_API_KEY": "${localEnv:GEMINI_API_KEY}"  # Injeta a chave do host
+  }
 }
