@@ -60,7 +60,7 @@ ninja.data = [
         {% if post.redirect == blank %}
           title: "{{ title | truncatewords: 13 }}",
         {% elsif post.redirect contains '://' %}
-          title: '{{ title | truncatewords: 13 }} <svg width="1.2rem" height="1.2rem" top=".5rem" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><path d="M17 13.5v6H5v-12h6m3-3h6v6m0-6-9 9" class="icon_svg-stroke" stroke="#999" stroke-width="1.5" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"></path></svg>',
+          title: "{{ title | truncatewords: 13 }} <svg width=\"1.2rem\" height=\"1.2rem\" top=\".5rem\" viewBox=\"0 0 40 40\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M17 13.5v6H5v-12h6m3-3h6v6m0-6-9 9\" class=\"icon_svg-stroke\" stroke=\"#999\" stroke-width=\"1.5\" fill=\"none\" fill-rule=\"evenodd\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg>",
         {% else %}
           title: "{{ title | truncatewords: 13 }}",
         {% endif %}
@@ -83,9 +83,9 @@ ninja.data = [
       {%- for item in collection.docs -%}
         {
           {%- if item.inline -%}
-            {%- assign title = item.content | newline_to_br | replace: "<br />", " " | replace: "<br/>", " " | strip_html | strip_newlines | escape | strip -%}
+            {%- assign title = item.content | newline_to_br | replace: "&lt;br /&gt;", " " | replace: "&lt;br/&gt;", " " | strip_html | strip_newlines | escape | strip -%}
           {%- else -%}
-            {%- assign title = item.title | newline_to_br | replace: "<br />", " " | replace: "<br/>", " " | strip_html | strip_newlines | escape | strip -%}
+            {%- assign title = item.title | newline_to_br | replace: "&lt;br /&gt;", " " | replace: "&lt;br/&gt;", " " | strip_html | strip_newlines | escape | strip -%}
           {%- endif -%}
           id: "{{ collection.label }}-{{ title | slugify }}",
           title: '{{ title | escape | emojify | truncatewords: 13 }}',
@@ -101,200 +101,86 @@ ninja.data = [
     {%- endif -%}
   {%- endfor -%}
   {%- if site.socials_in_search -%}
+    {%- assign socials_data = {
+        "acm_id": { "title": "ACM DL", "url_template": "https://dl.acm.org/profile/{{ id }}/" },
+        "blogger_url": { "title": "Blogger", "url_template": "{{ url }}" },
+        "bluesky_url": { "title": "Bluesky", "url_template": "{{ url }}" },
+        "dblp_url": { "title": "DBLP", "url_template": "{{ url }}" },
+        "discord_id": { "title": "Discord", "url_template": "https://discord.com/users/{{ id }}" },
+        "email": { "title": "email", "url_template": "mailto:{{ id | encode_email }}" },
+        "facebook_id": { "title": "Facebook", "url_template": "https://facebook.com/{{ id }}" },
+        "flickr_id": { "title": "Flickr", "url_template": "https://www.flickr.com/{{ id }}" },
+        "github_username": { "title": "GitHub", "url_template": "https://github.com/{{ id }}" },
+        "gitlab_username": { "title": "GitLab", "url_template": "https://gitlab.com/{{ id }}" },
+        "ieee_id": { "title": "IEEE Xplore", "url_template": "https://ieeexplore.ieee.org/author/{{ id }}/" },
+        "inspirehep_id": { "title": "Inspire HEP", "url_template": "https://inspirehep.net/authors/{{ id }}" },
+        "instagram_id": { "title": "Instagram", "url_template": "https://instagram.com/{{ id }}" },
+        "kaggle_id": { "title": "Kaggle", "url_template": "https://www.kaggle.com/{{ id }}" },
+        "keybase_username": { "title": "Keybase", "url_template": "https://keybase.io/{{ id }}" },
+        "lastfm_id": { "title": "Last FM", "url_template": "https://www.last.fm/user/{{ id }}" },
+        "lattes_id": { "title": "Lattes", "url_template": "http://lattes.cnpq.br/{{ id }}" },
+        "leetcode_id": { "title": "LeetCode", "url_template": "https://leetcode.com/u/{{ id }}/" },
+        "linkedin_username": { "title": "LinkedIn", "url_template": "https://www.linkedin.com/in/{{ id }}" },
+        "mastodon_username": { "title": "Mastodon", "url_template": "https://{{ id }}" },
+        "medium_username": { "title": "Medium", "url_template": "https://medium.com/@{{ id }}" },
+        "orcid_id": { "title": "ORCID", "url_template": "https://orcid.org/{{ id }}" },
+        "osf_id": { "title": "Open Science Framework", "url_template": "https://osf.io/{{ id }}/" },
+        "pinterest_id": { "title": "Pinterest", "url_template": "https://www.pinterest.com/{{ id }}" },
+        "publons_id": { "title": "Publons", "url_template": "https://publons.com/a/{{ id }}/" },
+        "quora_username": { "title": "Quora", "url_template": "https://www.quora.com/profile/{{ id }}" },
+        "research_gate_profile": { "title": "ResearchGate", "url_template": "https://www.researchgate.net/profile/{{ id }}/" },
+        "rss_icon": { "title": "RSS Feed", "url_template": "{{ site.baseurl }}/feed.xml" },
+        "scholar_userid": { "title": "Google Scholar", "url_template": "https://scholar.google.com/citations?user={{ id }}" },
+        "scopus_id": { "title": "Scopus", "url_template": "https://www.scopus.com/authid/detail.uri?authorId={{ id }}" },
+        "semanticscholar_id": { "title": "Semantic Scholar", "url_template": "https://www.semanticscholar.org/author/{{ id }}" },
+        "spotify_id": { "title": "Spotify", "url_template": "https://open.spotify.com/user/{{ id }}" },
+        "stackoverflow_id": { "title": "Stackoverflow", "url_template": "https://stackoverflow.com/users/{{ id }}" },
+        "strava_userid": { "title": "Strava", "url_template": "https://www.strava.com/athletes/{{ id }}" },
+        "telegram_username": { "title": "telegram", "url_template": "https://telegram.me/{{ id }}" },
+        "unsplash_id": { "title": "Unsplash", "url_template": "https://unsplash.com/@{{ id }}" },
+        "whatsapp_number": { "title": "whatsapp", "url_template": "https://wa.me/{{ id }}" },
+        "wikidata_id": { "title": "Wikidata", "url_template": "https://www.wikidata.org/wiki/{{ id }}" },
+        "wikipedia_id": { "title": "Wikipedia", "url_template": "https://wikipedia.org/wiki/User:{{ id }}" },
+        "work_url": { "title": "Work", "url_template": "{{ url }}" },
+        "x_username": { "title": "X", "url_template": "https://twitter.com/{{ id }}" },
+        "youtube_id": { "title": "YouTube", "url_template": "https://youtube.com/@{{ id }}" },
+        "zotero_username": { "title": "Zotero", "url_template": "https://www.zotero.org/{{ id }}" }
+    } -%}
+
     {%- for social in site.data.socials -%}
-      {%- case social[0] -%}
-        {%- when "acm_id" -%}
-          {%- assign social_id = "social-acm" -%}
-          {%- assign social_title = "ACM DL" -%}
-          {%- capture social_url %}"https://dl.acm.org/profile/{{ social[1] }}/"{% endcapture -%}
-        {%- when "blogger_url" -%}
-          {%- assign social_id = "social-blogger" -%}
-          {%- assign social_title = "Blogger" -%}
-          {%- capture social_url %}"{{ social[1] }}"{% endcapture -%}
-        {%- when "bluesky_url" -%}
-          {%- assign social_id = "social-bluesky" -%}
-          {%- assign social_title = "Bluesky" -%}
-          {%- capture social_url %}"{{ social[1] }}"{% endcapture -%}
-        {%- when "dblp_url" -%}
-          {%- assign social_id = "social-dblp" -%}
-          {%- assign social_title = "DBLP" -%}
-          {%- capture social_url %}"{{ social[1] }}"{% endcapture -%}
-        {%- when "discord_id" -%}
-          {%- assign social_id = "social-discord" -%}
-          {%- assign social_title = "Discord" -%}
-          {%- capture social_url %}"https://discord.com/users/{{ social[1] }}"{% endcapture -%}
-        {%- when "email" -%}
-          {%- assign social_id = "social-email" -%}
-          {%- assign social_title = "email" -%}
-          {%- capture social_url %}"mailto:{{ social[1] | encode_email }}"{% endcapture -%}
-        {%- when "facebook_id" -%}
-          {%- assign social_id = "social-facebook" -%}
-          {%- assign social_title = "Facebook" -%}
-          {%- capture social_url %}"https://facebook.com/{{ social[1] }}"{% endcapture -%}
-        {%- when "flickr_id" -%}
-          {%- assign social_id = "social-flickr" -%}
-          {%- assign social_title = "Flickr" -%}
-          {%- capture social_url %}"https://www.flickr.com/{{ social[1] }}"{% endcapture -%}
-        {%- when "github_username" -%}
-          {%- assign social_id = "social-github" -%}
-          {%- assign social_title = "GitHub" -%}
-          {%- capture social_url %}"https://github.com/{{ social[1] }}"{% endcapture -%}
-        {%- when "gitlab_username" -%}
-          {%- assign social_id = "social-gitlab" -%}
-          {%- assign social_title = "GitLab" -%}
-          {%- capture social_url %}"https://gitlab.com/{{ social[1] }}"{% endcapture -%}
-        {%- when "ieee_id" -%}
-          {%- assign social_id = "social-ieee" -%}
-          {%- assign social_title = "IEEE Xplore" -%}
-          {%- capture social_url %}"https://ieeexplore.ieee.org/author/{{ social[1] }}/"{% endcapture -%}
-        {%- when "inspirehep_id" -%}
-          {%- assign social_id = "social-inspire" -%}
-          {%- assign social_title = "Inspire HEP" -%}
-          {%- capture social_url %}"https://inspirehep.net/authors/{{ social[1] }}"{% endcapture -%}
-        {%- when "instagram_id" -%}
-          {%- assign social_id = "social-instagram" -%}
-          {%- assign social_title = "Instagram" -%}
-          {%- capture social_url %}"https://instagram.com/{{ social[1] }}"{% endcapture -%}
-        {%- when "kaggle_id" -%}
-          {%- assign social_id = "social-kaggle" -%}
-          {%- assign social_title = "Kaggle" -%}
-          {%- capture social_url %}"https://www.kaggle.com/{{ social[1] }}"{% endcapture -%}
-        {%- when "keybase_username" -%}
-          {%- assign social_id = "social-keybase" -%}
-          {%- assign social_title = "Keybase" -%}
-          {%- capture social_url %}"https://keybase.io/{{ social[1] }}"{% endcapture -%}
-        {%- when "lastfm_id" -%}
-          {%- assign social_id = "social-lastfm" -%}
-          {%- assign social_title = "Last FM" -%}
-          {%- capture social_url %}"https://www.last.fm/user/{{ social[1] }}"{% endcapture -%}
-        {%- when "lattes_id" -%}
-          {%- assign social_id = "social-lattes" -%}
-          {%- assign social_title = "Lattes" -%}
-          {%- capture social_url %}"http://lattes.cnpq.br/{{ social[1] }}"{% endcapture -%}
-        {%- when "leetcode_id" -%}
-          {%- assign social_id = "social-leetcode" -%}
-          {%- assign social_title = "LeetCode" -%}
-          {%- capture social_url %}"https://leetcode.com/u/{{ social[1] }}/"{% endcapture -%}
-        {%- when "linkedin_username" -%}
-          {%- assign social_id = "social-linkedin" -%}
-          {%- assign social_title = "LinkedIn" -%}
-          {%- capture social_url %}"https://www.linkedin.com/in/{{ social[1] }}"{% endcapture -%}
-        {%- when "mastodon_username" -%}
-          {%- assign social_id = "social-mastodon" -%}
-          {%- assign social_title = "Mastodon" -%}
-          {%- capture social_url %}"https://{{ social[1] }}"{% endcapture -%}
-        {%- when "medium_username" -%}
-          {%- assign social_id = "social-medium" -%}
-          {%- assign social_title = "Medium" -%}
-          {%- capture social_url %}"https://medium.com/@{{ social[1] }}"{% endcapture -%}
-        {%- when "orcid_id" -%}
-          {%- assign social_id = "social-orcid" -%}
-          {%- assign social_title = "ORCID" -%}
-          {%- capture social_url %}"https://orcid.org/{{ social[1] }}"{% endcapture -%}
-        {%- when "osf_id" -%}
-          {%- assign social_id = "social-osf" -%}
-          {%- assign social_title = "Open Science Framework" -%}
-          {%- capture social_url %}"https://osf.io/{{ social[1] }}/"{% endcapture -%}
-        {%- when "pinterest_id" -%}
-          {%- assign social_id = "social-pinterest" -%}
-          {%- assign social_title = "Pinterest" -%}
-          {%- capture social_url %}"https://www.pinterest.com/{{ social[1] }}"{% endcapture -%}
-        {%- when "publons_id" -%}
-          {%- assign social_id = "social-publons" -%}
-          {%- assign social_title = "Publons" -%}
-          {%- capture social_url %}"https://publons.com/a/{{ social[1] }}/"{% endcapture -%}
-        {%- when "quora_username" -%}
-          {%- assign social_id = "social-quora" -%}
-          {%- assign social_title = "Quora" -%}
-          {%- capture social_url %}"https://www.quora.com/profile/{{ social[1] }}"{% endcapture -%}
-        {%- when "research_gate_profile" -%}
-          {%- assign social_id = "social-researchgate" -%}
-          {%- assign social_title = "ResearchGate" -%}
-          {%- capture social_url %}"https://www.researchgate.net/profile/{{ social[1] }}/"{% endcapture -%}
-        {%- when "rss_icon" -%}
-          {%- assign social_id = "social-rss" -%}
-          {%- assign social_title = "RSS Feed" -%}
-          {%- capture social_url %}"{{ site.baseurl }}/feed.xml"{% endcapture -%}
-        {%- when "scholar_userid" -%}
-          {%- assign social_id = "social-scholar" -%}
-          {%- assign social_title = "Google Scholar" -%}
-          {%- capture social_url %}"https://scholar.google.com/citations?user={{ social[1] }}"{% endcapture -%}
-        {%- when "scopus_id" -%}
-          {%- assign social_id = "social-scopus" -%}
-          {%- assign social_title = "Scopus" -%}
-          {%- capture social_url %}"https://www.scopus.com/authid/detail.uri?authorId={{ social[1] }}"{% endcapture -%}
-        {%- when "semanticscholar_id" -%}
-          {%- assign social_id = "social-semanticscholar" -%}
-          {%- assign social_title = "Semantic Scholar" -%}
-          {%- capture social_url %}"https://www.semanticscholar.org/author/{{ social[1] }}"{% endcapture -%}
-        {%- when "spotify_id" -%}
-          {%- assign social_id = "social-spotify" -%}
-          {%- assign social_title = "Spotify" -%}
-          {%- capture social_url %}"https://open.spotify.com/user/{{ social[1] }}"{% endcapture -%}
-        {%- when "stackoverflow_id" -%}
-          {%- assign social_id = "social-stackoverflow" -%}
-          {%- assign social_title = "Stackoverflow" -%}
-          {%- capture social_url %}"https://stackoverflow.com/users/{{ social[1] }}"{% endcapture -%}
-        {%- when "strava_userid" -%}
-          {%- assign social_id = "social-strava" -%}
-          {%- assign social_title = "Strava" -%}
-          {%- capture social_url %}"https://www.strava.com/athletes/{{ social[1] }}"{% endcapture -%}
-        {%- when "telegram_username" -%}
-          {%- assign social_id = "social-telegram" -%}
-          {%- assign social_title = "telegram" -%}
-          {%- capture social_url %}"https://telegram.me/{{ social[1] }}"{% endcapture -%}
-        {%- when "unsplash_id" -%}
-          {%- assign social_id = "social-unsplash" -%}
-          {%- assign social_title = "Unsplash" -%}
-          {%- capture social_url %}"https://unsplash.com/@{{ social[1] }}"{% endcapture -%}
-        {%- comment -%}
-        // check how to add wechat qr code
-        {%- when "wechat_qr" -%}
-          {%- assign social_id = "social-wechat" -%}
-          {%- assign social_title = "WeChat" -%}
-          {%- capture social_url %}"https://wechat.com/{{ social[1] }}"{% endcapture -%}
-        {%- endcomment -%}
-        {%- when "whatsapp_number" -%}
-          {%- assign social_id = "social-whatsapp" -%}
-          {%- assign social_title = "whatsapp" -%}
-          {%- capture social_url %}"https://wa.me/{{ social[1] }}"{% endcapture -%}
-        {%- when "wikidata_id" -%}
-          {%- assign social_id = "social-wikidata" -%}
-          {%- assign social_title = "Wikidata" -%}
-          {%- capture social_url %}"https://www.wikidata.org/wiki/{{ social[1] }}"{% endcapture -%}
-        {%- when "wikipedia_id" -%}
-          {%- assign social_id = "social-wikipedia" -%}
-          {%- assign social_title = "Wikipedia" -%}
-          {%- capture social_url %}"https://wikipedia.org/wiki/User:{{ social[1] }}"{% endcapture -%}
-        {%- when "work_url" -%}
-          {%- assign social_id = "social-work" -%}
-          {%- assign social_title = "Work" -%}
-          {%- capture social_url %}"{{ social[1] }}"{% endcapture -%}
-        {%- when "x_username" -%}
-          {%- assign social_id = "social-x" -%}
-          {%- assign social_title = "X" -%}
-          {%- capture social_url %}"https://twitter.com/{{ social[1] }}"{% endcapture -%}
-        {%- when "youtube_id" -%}
-          {%- assign social_id = "social-youtube" -%}
-          {%- assign social_title = "YouTube" -%}
-          {%- capture social_url %}"https://youtube.com/@{{ social[1] }}"{% endcapture -%}
-        {%- when "zotero_username" -%}
-          {%- assign social_id = "social-zotero" -%}
-          {%- assign social_title = "Zotero" -%}
-          {%- capture social_url %}"https://www.zotero.org/{{ social[1] }}"{% endcapture -%}
+        {%- assign social_key = social[0] -%}
+        {%- if socials_data[social_key] -%}
+            {%- assign social_info = socials_data[social_key] -%}
+            {%- assign social_id = "social-" | append: social_key -%}
+            {%- assign social_title = social_info.title -%}
+            {%- capture social_url -%}
+                {%- if social_info.url_template contains "{{" -%}
+                    {{ social_info.url_template | replace: "{{ id }}", social[1] | replace: "{{ url }}", social[1] }}
+                {%- else -%}
+                    {{ social_info.url_template }}
+                {%- endif -%}
+            {%- endcapture -%}
+            {
+                id: '{{ social_id }}',
+                title: '{{ social_title }}',
+                section: 'Socials',
+                handler: () => {
+                    window.open({{ social_url }}, "_blank");
+                },
+            },
         {%- else -%}
-          {%- assign social_id = "social-" | append: social[0] -%}
-          {%- assign social_title = social[0] | capitalize -%}
-          {%- capture social_url %}"{{ social[1].url }}"{% endcapture -%}
-      {%- endcase -%}
-      {
-        id: '{{ social_id }}',
-        title: '{{ social_title }}',
-        section: 'Socials',
-        handler: () => {
-          window.open({{ social_url }}, "_blank");
-        },
-      },
+            {%- assign social_id = "social-" | append: social_key -%}
+            {%- assign social_title = social_key | capitalize -%}
+            {%- capture social_url %}{{ social[1].url }}{% endcapture -%}
+            {
+                id: '{{ social_id }}',
+                title: '{{ social_title }}',
+                section: 'Socials',
+                handler: () => {
+                    window.open({{ social_url }}, "_blank");
+                },
+            },
+        {%- endif -%}
     {%- endfor -%}
   {%- endif -%}
   {%- if site.enable_darkmode -%}
