@@ -1,11 +1,35 @@
 {
-  "name": "Dev Container",
+  "name": "Dev Container (Ubuntu + Node + Python + Gemini API)",
   "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
-  "features": {},
-  "postCreateCommand": "echo 'Container configurado!'",
+  
+  "features": {
+    "git": "latest",
+    "node": "lts",
+    "python": {
+      "version": "3.11",
+      "installTools": true
+    }
+  },
+
+  "postCreateCommand": "pip install google-generativeai python-dotenv && echo 'Dependências do Gemini instaladas!'",
+
   "customizations": {
     "vscode": {
-      "extensions": ["ms-vscode.cpptools", "ms-python.python"]
+      "extensions": [
+        "ms-python.python",
+        "dbaeumer.vscode-eslint",
+        "GitHub.copilot-chat",  # Para integração com IA
+        "GoogleCloudTools.cloudcode"  # Extensão oficial do Google Cloud
+      ],
+      "settings": {
+        "python.analysis.extraPaths": ["./"],
+        "python.formatting.provider": "black",
+        "google.generativeAI.apiKey": "${localEnv:GEMINI_API_KEY}"  # Configuração da chave
+      }
     }
+  },
+
+  "remoteEnv": {
+    "GEMINI_API_KEY": "${localEnv:GEMINI_API_KEY}"  # Injeta a chave do host
   }
 }
