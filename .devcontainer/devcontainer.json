@@ -21,7 +21,8 @@
         "GitHub.copilot-chat",
         "GoogleCloudTools.cloudcode",
         "ritwickdey.LiveServer",
-        "mhutchie.git-graph"
+        "mhutchie.git-graph",
+        "formulahendry.code-runner" // Adicionado aqui!
       ],
       "settings": {
         "python.analysis.extraPaths": ["./"],
