@@ -22,17 +22,18 @@
         "GoogleCloudTools.cloudcode",
         "ritwickdey.LiveServer",
         "mhutchie.git-graph",
-        "formulahendry.code-runner" // Adicionado aqui!
+        "formulahendry.code-runner"
       ],
       "settings": {
         "python.analysis.extraPaths": ["./"],
         "python.formatting.provider": "black",
-        "google.generativeAI.apiKey": "${localEnv:GEMINI_API_KEY}"
+        "google.generativeAI.apiKey": "${localEnv:GEMINI_API_KEY}" // Mantido!
       }
     }
   },
 
-  "remoteEnv": {
-    "GEMINI_API_KEY": "${localEnv:GEMINI_API_KEY}"
-  }
+  "runArgs": [
+    "-v",
+    "${localWorkspaceFolder}/.env:/workspace/.env"
+  ]
 }
