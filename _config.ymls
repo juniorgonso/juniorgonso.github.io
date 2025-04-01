@@ -1,0 +1,5 @@
+title: "Obedes Lopes | Portfólio de Desenvolvimento"
+description: "Portfólio profissional de Obedes Lopes, apresentando projetos, soluções em tecnologia e dicas técnicas."
+baseurl: "" # Deixe vazio se o site estiver na raiz
+url: "https://juniorgonso.github.io" # URL do site
+theme: al-folio  # Tema padrão do Jekyll

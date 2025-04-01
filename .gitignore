@@ -4,3 +4,9 @@ venv/
 .env
 *.pyc
 __pycache__
+*.log
+*.tmp
+*~
+config.local.js
+dist
+build

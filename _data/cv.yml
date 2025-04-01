@@ -1,0 +1,144 @@
+
+basics:
+  name: Obedes Lopes da silva Júnior
+  label: Estudante de Ti
+  email: obedes-junior@hotmail.com
+  phone: (81) 98545-8517
+  url: https://juniorgonso.github.io/
+  summary: Um desenvolvedor de software nascido em Recife, Pernambuco, com uma paixão por tecnologia. Atualmente cursando Análise e Desenvolvimento de Sistemas, com habilidades em Python e JavaScript. Sempre em busca de novos desafios e oportunidades para aplicar e expandir seus conhecimentos na área de tecnologia.
+
+work:
+  - company: MVL Terceirização (Trabalho Informal)
+    position: Auxiliar de Carga e Descarga
+    startDate: jul 2023
+    endDate: jul 2024
+    time: 1 ano
+  - company: UMANA BRASIL (M.Dias Branco) (Contrato Temporário)
+    position: Auxiliar de Produção
+    startDate: jun 2021
+    endDate: fev 2022
+    time: 9 meses
+  - company: Saulo Sena Pintura Automotiva (Trabalho Informal)
+    position: Preparador de Pintura
+    startDate: jan 2019
+    endDate: mai 2021
+    time: 2 anos e 5 meses
+
+education:
+  - institution: Universidade Estácio de Sá, Recife, Pernambuco
+    area: Estudante
+    studyType: Análise e Desenvolvimento de Sistemas
+    startDate: 2023.01
+    endDate: 2026.2
+    location: Recife, Pernambuco
+
+certificates:
+  - category: Desenvolvimento de Sistemas Web
+    name: Estácio
+    date: Em andamento
+  - category: Lógica de programação Utilizando Python
+    name: Estácio
+    date: Abril/2023
+  - category: Fundamentos de Lógica de Programação
+    name: Fundação Bradesco
+    date: Maio/2023
+  - category: Curso Auxiliar Administrativo e Segurança do Trabalho
+    name: Educa Brasil
+    date: 2011
+  - category: Curso Computação Gráfica\:\ Page Maker, Corel Draw, Photoshop
+    name: HR Qualificação Profissional
+    date: 2007
+  - category: Curso Montagem & Manutenção de Micro
+    name: HR Qualificação Profissional
+    date: 2007
+  - category: Informatica\:\ Word, Excel, power Point, Internet e Microsoft Office
+    name: HR Qualificação Profissional
+    date: 2008
+
+skills:
+  - category: Programação
+    name: Python
+  - category: Programação
+    name: JavaScript
+  - category: Programação
+    name: Lógica de Programação
+  - category: Desenvolvimento Web
+    name: HTML/CSS
+  - category: Sistemas
+    name: Análise e Desenvolvimento de Sistemas
+  - category: Sistemas
+    name: Administração de Sistemas
+  - category: Computação
+    name: Computação Gráfica
+  - category: Computação
+    name: Montagem e Manutenção de Computadores
+  - category: Microsoft Office
+    name: Word
+  - category: Microsoft Office
+    name: Excel
+  - category: Microsoft Office
+    name: PowerPoint
+  - category: Segurança
+    name: Segurança do Trabalho
+
+languages:
+  - language: Português
+    fluency: Linguagem nativa
+  - language: English
+    fluency: Básico
+
+interests:
+  - category: Desenvolvimento
+    name: Desenvolvimento de Software
+  - category: Desenvolvimento
+    name: Desenvolvimento Web
+  - category: Inteligência Artificial
+    name: Inteligência Artificial
+  - category: Inteligência Artificial
+    name: Machine Learning
+  - category: Automação
+    name: Automação
+  - category: Segurança
+    name: Segurança da Informação
+  - category: Conectividade
+    name: Internet das Coisas (IoT)
+  - category: Blockchain
+    name: Blockchain
+  - category: Realidade
+    name: Realidade Aumentada e Virtual
+  - category: Jogos
+    name: Jogos Digitais
+  - category: Tecnologias
+    name: Tecnologias Emergentes
+
+projects:
+  - name: Desenvolvimento Portfólio pessoal
+    startDate: mar 2025
+    endDate: Presente
+    description: Criação de um site pessoal para exibir meus projetos, habilidades e experiências profissionais.
+    details: O site inclui seções detalhadas sobre minha formação acadêmica, certificações, e interesses na área de tecnologia. Utilizei HTML, CSS e JavaScript para o desenvolvimento do frontend, e Python com Django para o backend.
+    items:
+      - Exibição de projetos concluídos e em andamento
+      - Seção de contato com formulário integrado
+      - Blog para compartilhar conhecimentos e atualizações
+      - Integração com redes sociais
+      - "<b>Tecnologias:</b> HTML/CSS/JavaScript, Python/Django"
+  - name: Projeto de Automação Residencial
+    startDate: jan 2024
+    endDate: fev 2024
+    description: Desenvolvimento de um sistema de automação residencial.
+    details: Este projeto envolveu a criação de um sistema para controlar dispositivos domésticos remotamente. O sistema permite o controle de iluminação, temperatura e segurança através de um aplicativo móvel.
+    items:
+      - Controle remoto de dispositivos
+      - Interface de usuário intuitiva
+      - "<b>Tecnologias:</b> Python, Raspberry Pi, IoT"
+  - name: Aplicativo de Lista de Tarefas
+    startDate: mai 2023
+    endDate: jun 2023
+    description: Criação de um aplicativo para gerenciamento de tarefas.
+    details: Desenvolvimento de um aplicativo simples para ajudar na organização de tarefas diárias. O aplicativo permite adicionar, editar, marcar como concluídas e remover tarefas.
+    items:
+      - Adicionar, editar e remover tarefas
+      - Marcar tarefas como concluídas
+      - "<b>Tecnologias:</b> JavaScript, HTML, CSS"
+
