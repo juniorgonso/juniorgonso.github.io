@@ -1,115 +1,114 @@
 {
   "basics": {
-    "name": "Albert Einstein",
-    "label": "Scientist",
+    "name": "Obedes Lopes",
+    "label": "Estudante",
     "image": "",
-    "email": "albert@einstein.de",
-    "phone": "(912) 123-4567",
-    "url": "https://alshedivat.github.io/al-folio/",
-    "summary": "A German-born theoretical physicist, widely ranked among the greatest and most influential scientists of all time",
+    "email": "obedes-junior@hotmail.com",
+    "phone": "(81) 98545-8517",
+    "url": "https://juniorgonso.github.io/juniorgonso/",
+    "summary": "",
     "location": {
-      "address": "2712 Broadway St",
-      "postalCode": "CA 94115",
-      "city": "San Francisco",
-      "countryCode": "US",
-      "region": "California"
+      "address": "",
+      "postalCode": "",
+      "city": "",
+      "countryCode": "",
+      "region": ""
     },
     "profiles": [
       {
         "network": "Twitter",
-        "username": "AlbertEinstein",
-        "url": "https://twitter.com/AlbertEinstein"
+        "username": "----",
+        "url": "https://twitter.com/"
       }
     ]
   },
   "work": [
     {
-      "name": "Institute for Advanced Study, Princeton University",
-      "position": "Professor of Theoretical Physics",
+      "name": "",
+      "position": "",
       "url": "https://example.com",
-      "startDate": "1933-01-01",
-      "endDate": "1955-01-01",
-      "summary": "Teaching at Palmer Physical Laboratory (now 302 Frist Campus Center). While not a professor at Princeton, I associated with the physics professors and continued to give lectures on campus.",
+      "startDate": "",
+      "endDate": "",
+      "summary": "",
       "highlights": ["Relativity"]
     }
   ],
   "volunteer": [
     {
-      "organization": "People's Climate March",
-      "location": "Zurich, Switzerland",
-      "position": "Lead Organizer",
+      "organization": "",
+      "location": "",
+      "position": "L",
       "url": "https://example.com",
       "startDate": "2014-04-01",
       "endDate": "2015-07-01",
-      "summary": "Lead organizer for the New York City branch of the People's Climate March, the largest climate march in history.",
+      "summary": "",
       "highlights": [
-        "Awarded 'Climate Hero' award by Greenpeace for my efforts organizing the march.",
-        "Men of the year 2014 by Time magazine"
+        "Awarded '"
       ]
     }
   ],
   "education": [
     {
-      "institution": "University of Zurich, Zurich, Switzerland",
-      "location": "Zurich, Switzerland",
-      "url": "https://www.uzh.ch/",
+      "institution": "Universidade Estacio de Sá, Recife, Pernambuco",
+      "location": "Recife, Pernambuco",
+      "url": "https://www.estacio.br/",
       "area": "Software Development",
-      "studyType": "PhD",
-      "startDate": "1905-01-01",
-      "endDate": "1905-01-01",
+      "studyType": "",
+      "startDate": "",
+      "endDate": "",
       "score": "10",
-      "courses": ["Theory of Relativity"]
+      "courses": ["Theory"]
     }
   ],
   "awards": [
     {
-      "title": "Nobel Prize in Physics",
-      "date": "1921-11-01",
-      "awarder": "Royal Swedish Academy of Sciences",
+      "title": " ",
+      "date": " ",
+      "awarder": " ",
       "url": "https://www.nobelprize.org/prizes/physics/1921/einstein/biographical/",
-      "summary": "The Nobel Prizes are five separate prizes that, according to Alfred Nobel's will of 1895, are awarded to 'those who, during the preceding year, have conferred the greatest benefit to humankind.'"
+      "summary": " '"
     }
   ],
   "certificates": [
     {
       "name": "Machine Learning",
       "date": "2018-01-01",
-      "issuer": "Stanford University",
+      "issuer": " ",
       "url": "https://example.com",
       "icon": "fa-solid fa-location-dot"
     },
     {
       "name": "Quantum Computing",
       "date": "2018-01-01",
-      "issuer": "Stanford University",
+      "issuer": " y",
       "url": "https://example.com",
       "icon": "fa-solid fa-tag"
     },
     {
-      "name": "Quantum Information",
+      "name": " ",
       "date": "2018-01-01",
-      "issuer": "Stanford University",
+      "issuer": " ",
       "url": "https://example.com",
       "icon": "fa-solid fa-envelope"
     },
     {
-      "name": "Quantum Cryptography",
+      "name": " ",
       "date": "2018-01-01",
-      "issuer": "Stanford University",
+      "issuer": " ",
       "url": "https://example.com",
       "icon": "fa-solid fa-hashtag"
     },
     {
-      "name": "Quantum Communication",
+      "name": " ",
       "date": "2018-01-01",
-      "issuer": "Stanford University",
+      "issuer": " ",
       "url": "https://example.com",
       "icon": "fa-solid fa-calendar"
     },
     {
-      "name": "Quantum Teleportation",
+      "name": " ",
       "date": "2018-01-01",
-      "issuer": "Stanford University",
+      "issuer": " ",
       "url": "https://example.com",
       "icon": "fa-solid fa-clipboard-check"
     }
