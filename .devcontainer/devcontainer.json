@@ -32,8 +32,5 @@
     }
   },
 
-  "runArgs": [
-    "-v",
-    "${localWorkspaceFolder}/.env:/workspace/.env"
-  ]
+  "runArgs": ["-v", "${localWorkspaceFolder}/.env:/workspace/.env"]
 }
