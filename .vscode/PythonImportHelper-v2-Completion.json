@@ -1,0 +1,55 @@
+[
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "load_dotenv",
+        "importPath": "dotenv",
+        "description": "dotenv",
+        "isExtraImport": true,
+        "detail": "dotenv",
+        "documentation": {}
+    },
+    {
+        "label": "requests",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "requests",
+        "description": "requests",
+        "detail": "requests",
+        "documentation": {}
+    },
+    {
+        "label": "ask_gemini",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def ask_gemini(prompt, temperature=0.7, max_tokens=2000):\n    \"\"\"\n    Envia uma solicitação para a API do Gemini\n    Parâmetros:\n    - prompt: Sua pergunta/instrução\n    - temperature: Criatividade (0-1)\n    - max_tokens: Tamanho da resposta\n    \"\"\"\n    payload = {\n        \"contents\": [{",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "API_KEY",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "API_KEY = os.getenv(\"GEMINI_API_KEY\")\nAPI_URL = f\"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key={API_KEY}\"\n# Validação da chave\nif not API_KEY:\n    raise ValueError(\"\"\"\n    ❌ Erro: Chave da API não encontrada.\n    Solução:\n    1. Crie um arquivo .env na raiz do projeto\n    2. Adicione: GEMINI_API_KEY=sua_chave_aqui\n    3. Nunca comite o .env no Git!",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "API_URL",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "API_URL = f\"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key={API_KEY}\"\n# Validação da chave\nif not API_KEY:\n    raise ValueError(\"\"\"\n    ❌ Erro: Chave da API não encontrada.\n    Solução:\n    1. Crie um arquivo .env na raiz do projeto\n    2. Adicione: GEMINI_API_KEY=sua_chave_aqui\n    3. Nunca comite o .env no Git!\n    \"\"\")",
+        "detail": "main",
+        "documentation": {}
+    }
+]
